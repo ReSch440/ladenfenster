@@ -243,6 +243,10 @@ a:hover {
   background: var(--bg-alt);
 }
 
+.section.section-flush {
+  padding-top: 0;
+}
+
 .section-head {
   display: grid;
   gap: 1rem;
@@ -987,6 +991,10 @@ html:not(.js) .nav-links {
   .ref {
     grid-template-columns: 1.45fr 1fr;
     gap: 4rem;
+  }
+
+  .ref:nth-child(even) {
+    grid-template-columns: 1fr 1.45fr;
   }
 
   .ref:nth-child(even) .ref-shot {
@@ -2054,6 +2062,17 @@ fieldset.field {
   overflow: hidden;
 }
 
+/* Im Button sind nur Spans erlaubt – hier bekommen sie Blockverhalten */
+.browser,
+.browser-view,
+.ms-title,
+.ms-hero,
+.ms-row > span,
+.ms-prices,
+.wood {
+  display: block;
+}
+
 /* Gemeinsames Gerüst der Mini-Websites */
 .ms {
   height: 100%;
@@ -2317,14 +2336,15 @@ fieldset.field {
   box-shadow: 0 0.6em 2em rgba(79, 35, 54, 0.12);
 }
 
-.site-salon .ms-prices b {
+.site-salon .ms-prices-title {
   display: block;
   margin-bottom: 0.7em;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.15em;
+  font-weight: 700;
 }
 
-.site-salon .ms-prices p {
+.site-salon .ms-price {
   display: flex;
   align-items: baseline;
   gap: 0.5em;
@@ -2332,14 +2352,14 @@ fieldset.field {
   font-size: 0.95em;
 }
 
-.site-salon .ms-prices p::after {
+.site-salon .ms-price::after {
   content: "";
   order: 1;
   flex: 1;
   border-bottom: 0.12em dotted rgba(63, 27, 43, 0.35);
 }
 
-.site-salon .ms-prices span:last-child {
+.site-salon .ms-price span:last-child {
   order: 2;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -2496,3 +2516,4 @@ fieldset.field {
     box-shadow: 0 0 0 1px var(--text);
   }
 }
+
