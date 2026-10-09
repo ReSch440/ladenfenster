@@ -137,10 +137,16 @@
         duration: reduceMotion.matches ? 120 : 220,
         easing: "cubic-bezier(0.64, 0, 0.78, 0)",
       });
-      anim.onfinish = function () {
+      let done = false;
+      const finish = function () {
+        if (done) return;
+        done = true;
         dialog.close();
         dialog.classList.remove("is-closing");
       };
+      anim.onfinish = finish;
+      // Falls der Browser Animationen pausiert (z. B. Tab im Hintergrund)
+      setTimeout(finish, 400);
     };
 
     document.querySelectorAll("[data-open-dialog]").forEach(function (trigger) {
@@ -174,11 +180,13 @@
   const upkeepSwitch = document.getElementById("upkeep-switch");
   if (upkeepSwitch) {
     const monthly = Number(upkeepSwitch.dataset.monthly) || 29;
-    const euro = new Intl.NumberFormat("de-AT", {
-      style: "currency",
-      currency: "EUR",
-      maximumFractionDigits: 0,
-    });
+    // Schreibweise wie auf der Seite: "1.038 €" statt "€ 1.038"
+    const euro = {
+      format: function (n) {
+        // de-DE, weil de-AT je nach Browser mit Leerzeichen gruppiert
+        return n.toLocaleString("de-DE", { maximumFractionDigits: 0 }) + " €";
+      },
+    };
 
     const render = function () {
       const on = upkeepSwitch.checked;
