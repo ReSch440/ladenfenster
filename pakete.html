@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="de-AT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pakete und Preise – Ladenfenster</title>
+  <meta name="description" content="Drei Pakete zum Fixpreis: Basis 690 €, Standard 1.490 €, Premium 2.900 €. Wartung optional um 29 € im Monat.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='4' width='18' height='16' rx='3' fill='white' stroke='%231d1d1f' stroke-width='1.8'/%3E%3Cpath d='M3.9 9V7a3 3 0 0 1 3-3h10.2a3 3 0 0 1 3 3v2z' fill='%23b4502c'/%3E%3Cpath d='M12 9v11' stroke='%231d1d1f' stroke-width='1.8'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Hauptnavigation">
+      <a class="brand" href="index.html">
+        <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M3.9 9V7a3 3 0 0 1 3-3h10.2a3 3 0 0 1 3 3v2z" fill="var(--accent)"/>
+          <path d="M12 9v11" stroke="currentColor" stroke-width="1.8"/>
+        </svg>
+        <span>Ladenfenster</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="sr-only">Menü öffnen</span>
+      </button>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="leistungen.html">Leistungen</a></li>
+        <li><a href="referenzen.html">Referenzen</a></li>
+        <li><a href="pakete.html" aria-current="page">Pakete</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="inhalt">
+    <div class="container page-head">
+      <h1 class="h1">Pakete und Preise</h1>
+      <p class="lead">Drei Pakete zum Fixpreis. Was im Angebot steht, zahlen Sie, auch wenn wir länger brauchen. Domain und Hosting sind im ersten Jahr enthalten.</p>
+    </div>
+
+    <section class="section section-flush" aria-label="Pakete">
+      <div class="container">
+        <div class="billing">
+          <div class="billing-text">
+            <strong id="upkeep-label">Wartung dazunehmen</strong>
+            <span>29 € im Monat. Zeigt, was das erste Jahr insgesamt kostet.</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" role="switch" id="upkeep-switch" data-monthly="29" aria-labelledby="upkeep-label">
+          </label>
+        </div>
+
+        <ul class="plans">
+          <li class="plan">
+            <div class="plan-head">
+              <div class="plan-name"><h2 class="h3">Basis</h2></div>
+              <p>Für Betriebe, die vor allem gefunden werden wollen.</p>
+            </div>
+            <div class="plan-price" data-plan-price="690" aria-live="polite">
+              <span class="plan-amount">690 €</span>
+              <span class="plan-sub">Einmalig, Fixpreis</span>
+            </div>
+            <ul class="plan-features">
+              <li>Eine Seite (One-Pager)</li>
+              <li>Kontaktdaten und Öffnungszeiten</li>
+              <li>Google-Unternehmensprofil</li>
+              <li>1 Korrekturrunde</li>
+              <li>Fertig in ca. 2 Wochen</li>
+            </ul>
+            <a class="btn btn-quiet btn-block" href="kontakt.html?paket=basis">Basis anfragen</a>
+          </li>
+
+          <li class="plan plan-featured">
+            <div class="plan-head">
+              <div class="plan-name"><h2 class="h3">Standard</h2><span class="pill pill-accent">Empfohlen</span></div>
+              <p>Für die meisten Betriebe die richtige Größe.</p>
+            </div>
+            <div class="plan-price" data-plan-price="1490" aria-live="polite">
+              <span class="plan-amount">1.490 €</span>
+              <span class="plan-sub">Einmalig, Fixpreis</span>
+            </div>
+            <ul class="plan-features">
+              <li>Bis zu 5 Seiten</li>
+              <li>Kontaktformular</li>
+              <li>Google-Unternehmensprofil</li>
+              <li>2 Korrekturrunden</li>
+              <li>1 Stunde Einschulung, damit Sie selbst ändern können</li>
+              <li>Fertig in ca. 3–4 Wochen</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="kontakt.html?paket=standard">Standard anfragen</a>
+          </li>
+
+          <li class="plan">
+            <div class="plan-head">
+              <div class="plan-name"><h2 class="h3">Premium</h2></div>
+              <p>Für alle, die sich um nichts kümmern wollen.</p>
+            </div>
+            <div class="plan-price" data-plan-price="2900" aria-live="polite">
+              <span class="plan-amount">2.900 €</span>
+              <span class="plan-sub">Einmalig, Fixpreis</span>
+            </div>
+            <ul class="plan-features">
+              <li>Bis zu 10 Seiten</li>
+              <li>Alle Texte schreiben wir</li>
+              <li>Fotoshooting in Ihrem Betrieb</li>
+              <li>Kontaktformular und Google-Profil</li>
+              <li>3 Korrekturrunden</li>
+              <li>Fertig in ca. 5–6 Wochen</li>
+            </ul>
+            <a class="btn btn-quiet btn-block" href="kontakt.html?paket=premium">Premium anfragen</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="wartung-title">
+      <div class="container upkeep">
+        <div class="stack">
+          <h2 class="h2" id="wartung-title">Wartung um 29 € im Monat</h2>
+          <p class="lead">Freiwillig und monatlich kündbar. Wenn Sie lieber selbst Hand anlegen, läuft Ihre Seite auch ohne.</p>
+        </div>
+        <ul>
+          <li><strong>Änderungen auf Zuruf</strong><span>Neue Öffnungszeiten, Preise oder ein Hinweis auf den Betriebsurlaub. Bis zu 30 Minuten im Monat.</span></li>
+          <li><strong>Updates und Sicherheit</strong><span>Wir halten die Technik aktuell und sichern Ihre Seite jeden Tag.</span></li>
+          <li><strong>Domain und Hosting</strong><span>Ab dem zweiten Jahr enthalten. Ohne Wartung kosten sie 60 € im Jahr.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2" id="faq-title">Häufige Fragen</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Gehört mir die Website, wenn sie fertig ist?</summary>
+            <div class="faq-body">
+              <p>Ja. Die Domain läuft auf Ihren Namen, und Texte, Fotos und Gestaltung gehören Ihnen. Wenn Sie später zu jemand anderem wechseln, geben wir Ihnen alle Dateien mit.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Was kostet die Website nach dem ersten Jahr?</summary>
+            <div class="faq-body">
+              <p>Ohne Wartung zahlen Sie nur Domain und Hosting, 60 € im Jahr. Mit Wartung zahlen Sie 29 € im Monat, Domain und Hosting sind dann schon dabei.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Was passiert, wenn ich mehr Korrekturrunden brauche?</summary>
+            <div class="faq-body">
+              <p>Jede weitere Runde kostet 90 €. Wir sagen Ihnen vorher Bescheid, bevor etwas dazukommt. Meistens reichen die Runden im Paket.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Wann muss ich bezahlen?</summary>
+            <div class="faq-body">
+              <p>Die Hälfte, wenn Sie das Angebot annehmen, den Rest, wenn die Seite online ist. Sie bekommen jeweils eine ordentliche Rechnung.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="weiter-title">
+      <div class="container price-note">
+        <h2 class="h2" id="weiter-title">Nicht sicher, welches Paket passt? <span>Das klären wir im Erstgespräch.</span></h2>
+        <a class="btn btn-primary" href="kontakt.html">Erstgespräch anfragen</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M3.9 9V7a3 3 0 0 1 3-3h10.2a3 3 0 0 1 3 3v2z" fill="var(--accent)"/>
+            <path d="M12 9v11" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+          <span>Ladenfenster</span>
+        </a>
+        <p>Websites für Kleinbetriebe in Oberösterreich.<br>Musterstraße 1, 4400 Steyr</p>
+      </div>
+      <nav aria-label="Fußzeile">
+        <ul class="footer-links">
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="referenzen.html">Referenzen</a></li>
+          <li><a href="pakete.html" aria-current="page">Pakete</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="impressum.html">Impressum</a></li>
+        </ul>
+      </nav>
+      <div class="footer-bottom">
+        <p class="footer-note">Übungsprojekt. Agentur, Kunden und Preise sind erfunden.</p>
+        <p>© <span data-year>2026</span> Ladenfenster</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
