@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="de-AT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kontakt – Ladenfenster</title>
+  <meta name="description" content="Erstgespräch anfragen: Schreiben Sie uns, was Ihr Betrieb braucht. Wir melden uns innerhalb eines Werktags.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='4' width='18' height='16' rx='3' fill='white' stroke='%231d1d1f' stroke-width='1.8'/%3E%3Cpath d='M3.9 9V7a3 3 0 0 1 3-3h10.2a3 3 0 0 1 3 3v2z' fill='%23b4502c'/%3E%3Cpath d='M12 9v11' stroke='%231d1d1f' stroke-width='1.8'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Hauptnavigation">
+      <a class="brand" href="index.html">
+        <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M3.9 9V7a3 3 0 0 1 3-3h10.2a3 3 0 0 1 3 3v2z" fill="var(--accent)"/>
+          <path d="M12 9v11" stroke="currentColor" stroke-width="1.8"/>
+        </svg>
+        <span>Ladenfenster</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="sr-only">Menü öffnen</span>
+      </button>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="leistungen.html">Leistungen</a></li>
+        <li><a href="referenzen.html">Referenzen</a></li>
+        <li><a href="pakete.html">Pakete</a></li>
+        <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="inhalt">
+    <div class="container page-head">
+      <h1 class="h1">Erzählen Sie uns von Ihrem Betrieb</h1>
+      <p class="lead">Ein paar Zeilen reichen. Wir melden uns innerhalb eines Werktags und vereinbaren ein Erstgespräch, bei Ihnen im Betrieb oder am Telefon.</p>
+    </div>
+
+    <section class="section section-flush" aria-label="Kontakt">
+      <div class="container contact-grid">
+        <div class="form-card">
+          <form id="contact-form" novalidate>
+            <p class="form-note">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 9v5M10 6.2v.1"/></svg>
+              <span>Dieses Formular ist eine Attrappe. Beim Absenden wird nichts verschickt und nichts gespeichert.</span>
+            </p>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="f-name">Name</label>
+                <input class="input" id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-error">
+                <p class="field-error" id="f-name-error" aria-live="polite"></p>
+              </div>
+
+              <div class="field">
+                <label for="f-betrieb">Betrieb</label>
+                <input class="input" id="f-betrieb" name="betrieb" type="text" autocomplete="organization" required placeholder="z. B. Tischlerei Muster" aria-describedby="f-betrieb-error">
+                <p class="field-error" id="f-betrieb-error" aria-live="polite"></p>
+              </div>
+
+              <div class="field">
+                <label for="f-email">E-Mail</label>
+                <input class="input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-error">
+                <p class="field-error" id="f-email-error" aria-live="polite"></p>
+              </div>
+
+              <div class="field">
+                <label for="f-telefon">Telefon <span class="optional">(optional)</span></label>
+                <input class="input" id="f-telefon" name="telefon" type="tel" autocomplete="tel" inputmode="tel" placeholder="z. B. 0664 123 45 67" aria-describedby="f-telefon-hint f-telefon-error">
+                <p class="field-hint" id="f-telefon-hint">Wenn Sie lieber angerufen werden.</p>
+                <p class="field-error" id="f-telefon-error" aria-live="polite"></p>
+              </div>
+
+              <div class="field field-wide">
+                <label for="f-branche">Branche</label>
+                <select class="input" id="f-branche" name="branche" required aria-describedby="f-branche-error">
+                  <option value="">Bitte wählen</option>
+                  <option>Tischlerei oder anderes Handwerk</option>
+                  <option>Café, Gasthaus oder Bäckerei</option>
+                  <option>Friseur oder Kosmetik</option>
+                  <option>Geschäft oder Handel</option>
+                  <option>Gesundheit, z. B. Physiotherapie</option>
+                  <option>Etwas anderes</option>
+                </select>
+                <p class="field-error" id="f-branche-error" aria-live="polite"></p>
+              </div>
+
+              <fieldset class="field field-wide">
+                <legend>Welches Paket interessiert Sie?</legend>
+                <div class="choices">
+                  <label class="choice"><input type="radio" name="paket" value="basis"><span>Basis<small>690 €</small></span></label>
+                  <label class="choice"><input type="radio" name="paket" value="standard"><span>Standard<small>1.490 €</small></span></label>
+                  <label class="choice"><input type="radio" name="paket" value="premium"><span>Premium<small>2.900 €</small></span></label>
+                  <label class="choice"><input type="radio" name="paket" value="unsicher" checked><span>Noch unsicher<small>Klären wir gemeinsam</small></span></label>
+                </div>
+              </fieldset>
+
+              <div class="field field-wide">
+                <label for="f-nachricht">Nachricht</label>
+                <textarea class="input" id="f-nachricht" name="nachricht" required placeholder="Was machen Sie, und was soll die Website können?" aria-describedby="f-nachricht-error"></textarea>
+                <p class="field-error" id="f-nachricht-error" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Anfrage absenden</button>
+              <p class="small">Alle Felder außer Telefon sind nötig, damit wir uns gut vorbereiten können.</p>
+            </div>
+          </form>
+
+          <div class="confirm" id="confirm" hidden>
+            <span class="confirm-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+            </span>
+            <h2 class="h2" tabindex="-1">Danke, <span data-confirm-name></span>.</h2>
+            <p class="notice"><strong>Es wurde nichts verschickt.</strong> Dieses Formular ist eine Attrappe in einem Übungsprojekt. Ihre Angaben wurden weder gesendet noch gespeichert.</p>
+            <p>In einer echten Version würden Sie jetzt eine Bestätigung per E-Mail bekommen, und wir würden uns innerhalb eines Werktags melden.</p>
+            <button class="btn btn-quiet" type="button" data-reset>Formular neu ausfüllen</button>
+          </div>
+        </div>
+
+        <aside class="contact-aside" aria-label="Kontaktdaten">
+          <div class="contact-block">
+            <h2 class="h3">Ladenfenster</h2>
+            <address>
+              Musterstraße 1<br>
+              4400 Steyr
+            </address>
+            <ul class="contact-lines">
+              <li><a href="tel:+437252000000">+43 7252 000 000</a></li>
+              <li><a href="mailto:hallo@ladenfenster.example">hallo@ladenfenster.example</a></li>
+            </ul>
+            <p class="placeholder-tag">Platzhalter: Adresse, Nummer und E-Mail sind nicht echt.</p>
+          </div>
+
+          <div class="contact-block">
+            <h2 class="h3">Erreichbarkeit</h2>
+            <dl class="hours">
+              <dt>Mo – Do</dt><dd>8:00 – 17:00</dd>
+              <dt>Freitag</dt><dd>8:00 – 12:00</dd>
+              <dt>Sa, So</dt><dd>geschlossen</dd>
+            </dl>
+            <p class="muted small">Auf E-Mails antworten wir innerhalb eines Werktags. Erstgespräche gerne auch am Abend, wenn Ihr Betrieb tagsüber offen hat.</p>
+          </div>
+
+          <div class="contact-block">
+            <h2 class="h3">Wo wir arbeiten</h2>
+            <p class="muted">Steyr und Umgebung: Garsten, Sierning, Dietach, Wolfern, Ternberg und bis Linz. Für Termine im Betrieb fahren wir gerne zu Ihnen.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M3.9 9V7a3 3 0 0 1 3-3h10.2a3 3 0 0 1 3 3v2z" fill="var(--accent)"/>
+            <path d="M12 9v11" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+          <span>Ladenfenster</span>
+        </a>
+        <p>Websites für Kleinbetriebe in Oberösterreich.<br>Musterstraße 1, 4400 Steyr</p>
+      </div>
+      <nav aria-label="Fußzeile">
+        <ul class="footer-links">
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="referenzen.html">Referenzen</a></li>
+          <li><a href="pakete.html">Pakete</a></li>
+          <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+          <li><a href="impressum.html">Impressum</a></li>
+        </ul>
+      </nav>
+      <div class="footer-bottom">
+        <p class="footer-note">Übungsprojekt. Agentur, Kunden und Preise sind erfunden.</p>
+        <p>© <span data-year>2026</span> Ladenfenster</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
