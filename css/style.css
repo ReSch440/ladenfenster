@@ -695,7 +695,9 @@ html:not(.js) .nav-links {
   animation: rise-phone 1.1s var(--ease-out) 0.2s both;
 }
 
-/* --- Fragen der Kunden --- */
+/* --- Fragen der Kunden ---
+   Die eine laute Stelle der Seite: echte Fragen in Mundart, groß gesetzt
+   wie Nachrichten, die Antwort daneben ruhig und klein. */
 .qa-list {
   list-style: none;
   display: grid;
@@ -704,43 +706,49 @@ html:not(.js) .nav-links {
 
 .qa {
   display: grid;
-  gap: 0.9rem;
-  align-content: start;
+  gap: 1rem;
 }
 
 .bubble {
   justify-self: start;
-  position: relative;
-  max-width: 22em;
-  padding: 0.7rem 1.05rem;
-  border-radius: 1.25rem 1.25rem 1.25rem 0.35rem;
+  padding: 0.5em 0.85em 0.55em;
+  border-radius: 1.05em 1.05em 1.05em 0.3em;
   background: var(--surface);
   box-shadow: var(--shadow-sm);
-  font-size: 1.1875rem;
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: -0.012em;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.4vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-wrap: wrap;
 }
 
 .qa-answer {
   display: grid;
   gap: 0.3rem;
-  padding-left: 1.05rem;
+  max-width: 30em;
+  padding-left: 1.25rem;
 }
 
 .qa-answer strong {
+  font-size: 1.125rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.012em;
 }
 
 .qa-answer p {
   color: var(--muted);
 }
 
-@media (min-width: 720px) {
+/* Frage über die ganze Breite, damit sie in einer Zeile bleibt;
+   die Antwort darunter wie eine Rückmeldung leicht eingerückt */
+@media (min-width: 900px) {
   .qa-list {
-    grid-template-columns: 1fr 1fr;
-    gap: 3.5rem 3rem;
+    gap: 3.5rem;
+  }
+
+  .qa-answer {
+    padding-left: 1.6rem;
   }
 }
 
@@ -844,14 +852,17 @@ html:not(.js) .nav-links {
   align-content: start;
 }
 
+/* Icon ohne Kachel: Es begleitet den Titel, es ist kein eigenes Element */
 .service-icon {
-  width: 2.75rem;
-  height: 2.75rem;
-  margin-bottom: 0.4rem;
-  padding: 0.6rem;
-  border-radius: 0.8rem;
-  background: var(--accent-soft);
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-bottom: 0.25rem;
   color: var(--accent);
+}
+
+.service .h3 {
+  font-size: clamp(1.375rem, 2vw, 1.5rem);
+  letter-spacing: -0.02em;
 }
 
 .service p {
@@ -900,16 +911,16 @@ html:not(.js) .nav-links {
 .not-list {
   list-style: none;
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
 }
 
+/* Keine Karten: eine feine Linie trennt, der Abstand gruppiert */
 .not-item {
   display: grid;
   gap: 0.5rem;
-  padding: 1.5rem;
-  border-radius: var(--radius-m);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
+  align-content: start;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
 }
 
 .not-item .h3 {
@@ -935,7 +946,7 @@ html:not(.js) .nav-links {
 @media (min-width: 900px) {
   .not-list {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: 3rem;
   }
 }
 
@@ -1045,19 +1056,26 @@ html:not(.js) .nav-links {
   padding: 1.5rem;
 }
 
+/* Titel und Schließen-Knopf bleiben stehen, wenn der Inhalt am Handy scrollt */
 .dialog-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
+  margin: -1.5rem -1.5rem 0;
+  padding: 1.5rem 1.5rem 0.75rem;
+  background: var(--surface);
 }
 
 .dialog-head .h2 {
   font-size: clamp(1.625rem, 5vw, 2.25rem);
 }
 
-.dialog-head .ref-meta {
-  margin-top: 0.6rem;
+.dialog-head + .ref-meta {
+  margin-top: -1rem;
 }
 
 .dialog-close {
@@ -1129,6 +1147,15 @@ html:not(.js) .nav-links {
   .dialog-inner {
     padding: 2.25rem;
     gap: 2rem;
+  }
+
+  .dialog-head {
+    margin: -2.25rem -2.25rem 0;
+    padding: 2.25rem 2.25rem 1rem;
+  }
+
+  .dialog-head + .ref-meta {
+    margin-top: -1.25rem;
   }
 }
 
@@ -1274,15 +1301,18 @@ html:not(.js) .nav-links {
 }
 
 .plan-sub {
-  min-height: 1.4em;
+  min-height: 1.5em;
   color: var(--muted);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-variant-numeric: tabular-nums;
 }
 
+/* Die Summe fürs erste Jahr ist das, was sich beim Umschalten ändert */
 .plan-sub strong {
-  color: var(--text);
-  font-weight: 600;
+  color: var(--accent-text);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .plan-features {
@@ -1320,14 +1350,17 @@ html:not(.js) .nav-links {
 .upkeep ul {
   list-style: none;
   display: grid;
-  gap: 0.75rem;
 }
 
 .upkeep li {
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius-m);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 0.2rem;
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
+.upkeep li:last-child {
+  border-bottom: 1px solid var(--line);
 }
 
 .upkeep li strong {
@@ -1757,9 +1790,13 @@ fieldset.field {
 /* ==========================================================================
    Impressum
    ========================================================================== */
+/* Schmale Spalte, aber links an der Seitenüberschrift ausgerichtet */
 .legal {
   display: grid;
   gap: 3rem;
+}
+
+.legal > * {
   max-width: 46rem;
 }
 
@@ -2527,7 +2564,6 @@ fieldset.field {
   .plan,
   .form-card,
   .faq details,
-  .not-item,
   .browser {
     box-shadow: 0 0 0 1px var(--text);
   }

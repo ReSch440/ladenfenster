@@ -49,12 +49,13 @@
       <div class="container">
         <div class="billing">
           <div class="billing-text">
-            <strong id="upkeep-label">Wartung dazunehmen</strong>
+            <strong id="upkeep-label">Erstes Jahr mit Wartung zeigen</strong>
             <span>29 € im Monat. Zeigt, was das erste Jahr insgesamt kostet.</span>
           </div>
           <label class="switch">
             <input type="checkbox" role="switch" id="upkeep-switch" data-monthly="29" aria-labelledby="upkeep-label">
           </label>
+          <p class="sr-only" id="upkeep-status" aria-live="polite"></p>
         </div>
 
         <ul class="plans">
@@ -63,7 +64,7 @@
               <div class="plan-name"><h2 class="h3">Basis</h2></div>
               <p>Für Betriebe, die vor allem gefunden werden wollen.</p>
             </div>
-            <div class="plan-price" data-plan-price="690" aria-live="polite">
+            <div class="plan-price" data-plan-price="690">
               <span class="plan-amount">690 €</span>
               <span class="plan-sub">Einmalig, Fixpreis</span>
             </div>
@@ -82,7 +83,7 @@
               <div class="plan-name"><h2 class="h3">Standard</h2><span class="pill pill-accent">Empfohlen</span></div>
               <p>Für die meisten Betriebe die richtige Größe.</p>
             </div>
-            <div class="plan-price" data-plan-price="1490" aria-live="polite">
+            <div class="plan-price" data-plan-price="1490">
               <span class="plan-amount">1.490 €</span>
               <span class="plan-sub">Einmalig, Fixpreis</span>
             </div>
@@ -102,7 +103,7 @@
               <div class="plan-name"><h2 class="h3">Premium</h2></div>
               <p>Für alle, die sich um nichts kümmern wollen.</p>
             </div>
-            <div class="plan-price" data-plan-price="2900" aria-live="polite">
+            <div class="plan-price" data-plan-price="2900">
               <span class="plan-amount">2.900 €</span>
               <span class="plan-sub">Einmalig, Fixpreis</span>
             </div>

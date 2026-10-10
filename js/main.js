@@ -188,24 +188,35 @@
       },
     };
 
-    const render = function () {
+    // Eine gemeinsame Ansage statt drei einzelner Live-Bereiche
+    const upkeepStatus = document.getElementById("upkeep-status");
+
+    const render = function (announce) {
       const on = upkeepSwitch.checked;
+      const parts = [];
       document.querySelectorAll("[data-plan-price]").forEach(function (el) {
         const base = Number(el.dataset.planPrice);
         const sub = el.querySelector(".plan-sub");
+        const name = el.closest(".plan").querySelector("h2").textContent;
+        const total = euro.format(base + monthly * 12);
         if (on) {
-          sub.innerHTML =
-            "Erstes Jahr mit Wartung: <strong>" +
-            euro.format(base + monthly * 12) +
-            "</strong>";
+          sub.innerHTML = "Erstes Jahr mit Wartung: <strong>" + total + "</strong>";
         } else {
           sub.textContent = "Einmalig, Fixpreis";
         }
+        parts.push(name + " " + total);
       });
+      if (upkeepStatus && announce) {
+        upkeepStatus.textContent = on
+          ? "Erstes Jahr mit Wartung: " + parts.join(", ") + "."
+          : "Wieder die Einmalpreise ohne Wartung.";
+      }
     };
 
-    upkeepSwitch.addEventListener("change", render);
-    render();
+    upkeepSwitch.addEventListener("change", function () {
+      render(true);
+    });
+    render(false);
   }
 
   /* ---------- Kontakt: Prüfung beim Ausfüllen ---------- */
