@@ -28,3 +28,16 @@ server.ps1        kleiner lokaler Webserver für die Vorschau
 Navigation und Footer stehen in jeder HTML-Datei gleich drin. Bei einer Änderung
 müssen sie in allen sechs Dateien angepasst werden. Die aktuelle Seite ist mit
 `aria-current="page"` markiert.
+
+## Farben
+
+Alle Farben stehen als Variablen ganz oben in `css/style.css`.
+
+| Rolle        | Hell      | Dunkel    |
+|--------------|-----------|-----------|
+| Hintergrund  | `#f5f0e6` Creme | `#0d1524` dunkles Navy |
+| Text         | `#18202e` | `#f2ece0` Creme |
+| Akzent       | `#1b2a44` Navy | `#b7c8e2` helles Blaugrau |
+
+Die Beispiel-Websites in den Mockups (Tischlerei, Café, Salon) haben bewusst ihre
+eigenen Farben, weil sie andere Firmen zeigen.

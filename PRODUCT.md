@@ -35,8 +35,10 @@ Six pages: Start, Leistungen, Referenzen (three fictional case studies with a de
 
 ## Brand Commitments
 
-- Apple-like restraint: calm, generous white space, system font stack, a single accent colour (terracotta `#b4502c`, lighter in dark mode), full dark mode.
-- Logo: a small shop-window mark with a terracotta awning.
+- Apple-like restraint: calm, generous space, system font stack, a single accent colour, full dark mode.
+- Light mode: warm cream canvas (`#f5f0e6`, never pure white), dark navy accent (`#1b2a44`), text in a very dark blue-grey (`#18202e`), warm-tinted neutrals and shadows.
+- Dark mode: very dark navy canvas (`#0d1524`), cream text (`#f2ece0`), light blue-grey accent (`#b7c8e2`) so links stay distinct from body text.
+- Logo: a small shop-window mark with an awning in the accent colour (navy, blue-grey in dark mode).
 
 ## Evidence on Hand
 
