@@ -23,8 +23,13 @@
   --accent: #1b2a44; /* dunkles Navy */
   --accent-press: #111c30;
   --accent-soft: rgba(27, 42, 68, 0.09);
+  --accent-soft-hover: color-mix(in srgb, var(--accent) 16%, transparent);
   --accent-text: #1b2a44; /* Schrift auf --accent-soft, auch auf Grau weit über 4,5:1 */
   --on-accent: #f5f0e6;
+
+  /* Knopf im Schalter: aus auf grauer Spur, an auf Akzent-Spur */
+  --knob: #ffffff;
+  --knob-on: #ffffff;
 
   /* Kante von Eingabefeldern und Schaltern, mindestens 3:1 zum Hintergrund */
   --field-line: #847b6c;
@@ -68,13 +73,17 @@
     --fill: rgba(242, 236, 224, 0.07);
     --fill-strong: rgba(242, 236, 224, 0.13);
 
-    --accent: #b7c8e2; /* helles Blaugrau, hebt sich vom cremefarbenen Text ab */
-    --accent-press: #cad7ea;
-    --accent-soft: rgba(183, 200, 226, 0.16);
-    --accent-text: #b7c8e2;
+    --accent: #f5f0e6; /* Creme, dasselbe wie der Hintergrund im Hellmodus */
+    --accent-press: #e3d9c5;
+    --accent-soft: #22304d; /* dunkle Navy-Fläche für Sekundärbutton, Pills, aktive Navigation */
+    --accent-soft-hover: #2c3d60;
+    --accent-text: #f5f0e6;
     --on-accent: #0d1524;
 
-    --field-line: #8590a6;
+    --knob: #f2ece0;
+    --knob-on: #0d1524;
+
+    --field-line: #8f877a;
 
     --success: #4cc38a;
     --error: #ff7a6e;
@@ -593,7 +602,7 @@ html:not(.js) .nav-links {
 }
 
 .btn-secondary:active {
-  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  background: var(--accent-soft-hover);
 }
 
 .btn-quiet {
@@ -612,7 +621,7 @@ html:not(.js) .nav-links {
   }
 
   .btn-secondary:hover {
-    background: color-mix(in srgb, var(--accent) 16%, transparent);
+    background: var(--accent-soft-hover);
   }
 
   .btn-quiet:hover {
@@ -1232,9 +1241,9 @@ html:not(.js) .nav-links {
   width: 1.75rem;
   height: 1.75rem;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--knob);
   box-shadow: 0 2px 6px rgb(var(--shadow-rgb) / 0.22), 0 0 0 0.5px rgb(var(--shadow-rgb) / 0.06);
-  transition: transform 0.3s var(--ease-out), width 0.2s var(--ease-out);
+  transition: transform 0.3s var(--ease-out), width 0.2s var(--ease-out), background-color 0.25s ease;
 }
 
 /* Der Knopf wird beim Drücken breiter, wie bei iOS */
@@ -1248,6 +1257,7 @@ html:not(.js) .nav-links {
 }
 
 .switch input:checked::after {
+  background: var(--knob-on);
   transform: translateX(1.25rem);
 }
 
