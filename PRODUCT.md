@@ -37,8 +37,8 @@ Six pages: Start, Leistungen, Referenzen (three fictional case studies with a de
 
 - Apple-like restraint: calm, generous space, system font stack, a single accent colour, full dark mode.
 - Light mode: warm cream canvas (`#f5f0e6`, never pure white), dark navy accent (`#1b2a44`), text in a very dark blue-grey (`#18202e`), warm-tinted neutrals and shadows.
-- Dark mode: very dark navy canvas (`#0d1524`), cream text (`#f2ece0`), light blue-grey accent (`#b7c8e2`) so links stay distinct from body text.
-- Logo: a small shop-window mark with an awning in the accent colour (navy, blue-grey in dark mode).
+- Dark mode: very dark navy canvas (`#0d1524`), cream text (`#f2ece0`), cream accent (`#f5f0e6`, the light-mode canvas) with navy text on cream buttons; secondary surfaces stay navy (`#22304d`). No blue or blue-grey accents.
+- Logo: a small shop-window mark with an awning in the accent colour (navy, cream in dark mode).
 
 ## Evidence on Hand
 

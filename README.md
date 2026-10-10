@@ -37,7 +37,7 @@ Alle Farben stehen als Variablen ganz oben in `css/style.css`.
 |--------------|-----------|-----------|
 | Hintergrund  | `#f5f0e6` Creme | `#0d1524` dunkles Navy |
 | Text         | `#18202e` | `#f2ece0` Creme |
-| Akzent       | `#1b2a44` Navy | `#b7c8e2` helles Blaugrau |
+| Akzent       | `#1b2a44` Navy | `#f5f0e6` Creme |
 
 Die Beispiel-Websites in den Mockups (Tischlerei, Café, Salon) haben bewusst ihre
 eigenen Farben, weil sie andere Firmen zeigen.
