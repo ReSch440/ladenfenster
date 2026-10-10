@@ -49,7 +49,7 @@
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI Variable Display",
     "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
 
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --gutter: 1.25rem;
   --section-space: clamp(4rem, 11vw, 8rem);
 }
@@ -291,7 +291,7 @@ a:hover {
   background: var(--nav-bg);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
-  transition: box-shadow 0.25s ease;
+  transition: box-shadow 0.25s ease, background-color 0.2s ease;
 }
 
 /* Kante erst sichtbar, wenn Inhalt darunter durchscrollt */
@@ -302,7 +302,6 @@ a:hover {
 /* Offenes Handy-Menü: Leiste und Menü werden eine deckende Fläche */
 .site-header:has(.nav-links.is-open) {
   background: var(--bg);
-  transition: none;
 }
 
 .nav {
@@ -443,14 +442,14 @@ html:not(.js) .nav-links {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-0.5rem);
-  transition: opacity 0.2s ease, transform 0.35s var(--ease-out), visibility 0s linear 0.35s;
+  transition: opacity 0.15s ease, transform 0.2s var(--ease-out), visibility 0s linear 0.2s;
 }
 
 .js .nav-links.is-open {
   opacity: 1;
   visibility: visible;
   transform: none;
-  transition: opacity 0.2s ease, transform 0.35s var(--ease-out), visibility 0s;
+  transition: opacity 0.2s ease, transform 0.3s var(--ease-out), visibility 0s;
 }
 
 .js .nav-links a {
@@ -514,10 +513,12 @@ html:not(.js) .nav-links {
     transition: background-color 0.2s ease, opacity 0.2s ease;
   }
 
-  .js .nav-links a:hover,
-  .nav-links a:hover {
-    opacity: 1;
-    background: var(--fill);
+  @media (hover: hover) and (pointer: fine) {
+    .js .nav-links a:hover,
+    .nav-links a:hover {
+      opacity: 1;
+      background: var(--fill);
+    }
   }
 
   .js .nav-links a:active,
@@ -560,8 +561,8 @@ html:not(.js) .nav-links {
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.35s var(--ease-out),
-    box-shadow 0.2s ease;
+  /* Loslassen federt in 250 ms zurück, schneller als vorher */
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.25s var(--ease-out);
 }
 
 .btn:hover {
@@ -570,17 +571,13 @@ html:not(.js) .nav-links {
 
 /* Feedback beim Drücken, nicht erst beim Loslassen */
 .btn:active {
-  transform: scale(0.96);
-  transition-duration: 0s;
+  transform: scale(0.97);
+  transition-duration: 0.1s;
 }
 
 .btn-primary {
   background: var(--accent);
   color: var(--on-accent);
-}
-
-.btn-primary:hover {
-  background: var(--accent-press);
 }
 
 .btn-primary:active {
@@ -592,7 +589,7 @@ html:not(.js) .nav-links {
   color: var(--accent-text);
 }
 
-.btn-secondary:hover {
+.btn-secondary:active {
   background: color-mix(in srgb, var(--accent) 16%, transparent);
 }
 
@@ -601,8 +598,23 @@ html:not(.js) .nav-links {
   color: var(--text);
 }
 
-.btn-quiet:hover {
+.btn-quiet:active {
   background: var(--fill-strong);
+}
+
+/* Hover nur mit echter Maus. Am Handy bliebe der Zustand nach dem Tippen hängen. */
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background: var(--accent-press);
+  }
+
+  .btn-secondary:hover {
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+  }
+
+  .btn-quiet:hover {
+    background: var(--fill-strong);
+  }
 }
 
 .btn-block {
@@ -997,15 +1009,15 @@ html:not(.js) .nav-links {
   cursor: zoom-in;
   border-radius: 14px;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.45s var(--ease-out);
+  transition: transform 0.3s var(--ease-out);
 }
 
 .ref-shot:active {
   transform: scale(0.98);
-  transition-duration: 0.08s;
+  transition-duration: 0.1s;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .ref-shot:hover .browser {
     box-shadow: var(--shadow-lg), 0 0 0 1px var(--line);
   }
@@ -1043,11 +1055,6 @@ html:not(.js) .nav-links {
   background: var(--scrim);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
-}
-
-.ref-dialog.is-closing::backdrop {
-  opacity: 0;
-  transition: opacity 0.25s ease;
 }
 
 .dialog-inner {
@@ -1093,14 +1100,16 @@ html:not(.js) .nav-links {
   transition: background-color 0.2s ease, transform 0.3s var(--ease-out);
 }
 
-.dialog-close:hover {
-  background: var(--fill-strong);
-  color: var(--text);
+@media (hover: hover) and (pointer: fine) {
+  .dialog-close:hover {
+    background: var(--fill-strong);
+    color: var(--text);
+  }
 }
 
 .dialog-close:active {
-  transform: scale(0.9);
-  transition-duration: 0s;
+  transform: scale(0.92);
+  transition-duration: 0.1s;
 }
 
 .dialog-close svg {
@@ -1222,7 +1231,7 @@ html:not(.js) .nav-links {
   border-radius: 50%;
   background: #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
-  transition: transform 0.35s var(--ease-out), width 0.2s var(--ease-out);
+  transition: transform 0.3s var(--ease-out), width 0.2s var(--ease-out);
 }
 
 /* Der Knopf wird beim Drücken breiter, wie bei iOS */
@@ -1426,7 +1435,7 @@ html:not(.js) .nav-links {
   background: var(--muted);
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4.5l4 4 4-4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4.5l4 4 4-4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
-  transition: transform 0.35s var(--ease-out);
+  transition: transform 0.3s var(--ease-out);
 }
 
 .faq details[open] summary::after {
@@ -1436,7 +1445,7 @@ html:not(.js) .nav-links {
 .faq details::details-content {
   block-size: 0;
   overflow: hidden;
-  transition: block-size 0.35s var(--ease-out), content-visibility 0.35s allow-discrete;
+  transition: block-size 0.3s var(--ease-out), content-visibility 0.3s allow-discrete;
 }
 
 .faq details[open]::details-content {
@@ -1734,7 +1743,7 @@ fieldset.field {
 }
 
 .confirm:not([hidden]) {
-  animation: confirm-in 0.45s var(--ease-out);
+  animation: confirm-in 0.35s var(--ease-out);
 }
 
 .contact-aside {

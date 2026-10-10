@@ -98,10 +98,27 @@
   const dialogs = document.querySelectorAll(".ref-dialog");
   if (dialogs.length && typeof HTMLDialogElement === "function") {
     let lastTrigger = null;
+    const easeOut = "cubic-bezier(0.23, 1, 0.32, 1)";
+
+    // Hintergrund ein- und ausblenden; ältere Browser ohne pseudoElement überspringen das
+    const fadeBackdrop = function (dialog, from, to, duration) {
+      try {
+        dialog.animate([{ opacity: from }, { opacity: to }], {
+          duration: duration,
+          easing: "ease",
+          fill: "forwards",
+          pseudoElement: "::backdrop",
+        });
+      } catch (e) {}
+    };
 
     const openDialog = function (dialog, trigger) {
       lastTrigger = trigger;
       dialog.classList.remove("is-closing");
+      // Reste vom letzten Schließen (fill: forwards) entfernen
+      dialog.getAnimations({ subtree: true }).forEach(function (a) {
+        a.cancel();
+      });
       dialog.showModal();
 
       // Das Fenster wächst aus dem angeklickten Element heraus
@@ -114,29 +131,20 @@
       const frames = reduceMotion.matches
         ? [{ opacity: 0 }, { opacity: 1 }]
         : [
-            { opacity: 0, transform: "scale(0.86)" },
+            { opacity: 0, transform: "scale(0.9)" },
             { opacity: 1, transform: "scale(1)" },
           ];
-      dialog.animate(frames, {
-        duration: reduceMotion.matches ? 150 : 420,
-        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      dialog.openAnim = dialog.animate(frames, {
+        duration: reduceMotion.matches ? 150 : 340,
+        easing: easeOut,
       });
+      fadeBackdrop(dialog, 0, 1, reduceMotion.matches ? 150 : 260);
     };
 
     const closeDialog = function (dialog) {
       if (dialog.classList.contains("is-closing")) return;
       dialog.classList.add("is-closing");
-      // Gleicher Weg zurück, wie es gekommen ist
-      const frames = reduceMotion.matches
-        ? [{ opacity: 1 }, { opacity: 0 }]
-        : [
-            { opacity: 1, transform: "scale(1)" },
-            { opacity: 0, transform: "scale(0.9)" },
-          ];
-      const anim = dialog.animate(frames, {
-        duration: reduceMotion.matches ? 120 : 220,
-        easing: "cubic-bezier(0.64, 0, 0.78, 0)",
-      });
+
       let done = false;
       const finish = function () {
         if (done) return;
@@ -144,7 +152,29 @@
         dialog.close();
         dialog.classList.remove("is-closing");
       };
-      anim.onfinish = finish;
+
+      fadeBackdrop(dialog, 1, 0, reduceMotion.matches ? 120 : 180);
+
+      // Wird während des Öffnens geschlossen: dieselbe Animation rückwärts,
+      // ab der Stelle, an der sie gerade ist. Kein Sprung zurück auf 100 %.
+      const running = dialog.openAnim;
+      if (running && running.playState === "running") {
+        running.onfinish = finish;
+        running.playbackRate = -1.6;
+      } else {
+        // Gleicher Weg zurück, aber schneller als beim Öffnen
+        const frames = reduceMotion.matches
+          ? [{ opacity: 1 }, { opacity: 0 }]
+          : [
+              { opacity: 1, transform: "scale(1)" },
+              { opacity: 0, transform: "scale(0.95)" },
+            ];
+        dialog.animate(frames, {
+          duration: reduceMotion.matches ? 120 : 180,
+          easing: easeOut,
+          fill: "forwards",
+        }).onfinish = finish;
+      }
       // Falls der Browser Animationen pausiert (z. B. Tab im Hintergrund)
       setTimeout(finish, 400);
     };
@@ -203,6 +233,18 @@
           sub.innerHTML = "Erstes Jahr mit Wartung: <strong>" + total + "</strong>";
         } else {
           sub.textContent = "Einmalig, Fixpreis";
+        }
+        // Kurzes Scharfstellen zeigt, dass sich die Zeile geändert hat
+        if (announce) {
+          sub.animate(
+            reduceMotion.matches
+              ? [{ opacity: 0.4 }, { opacity: 1 }]
+              : [
+                  { opacity: 0.3, filter: "blur(3px)", transform: "translateY(3px)" },
+                  { opacity: 1, filter: "blur(0)", transform: "none" },
+                ],
+            { duration: 260, easing: "cubic-bezier(0.23, 1, 0.32, 1)" }
+          );
         }
         parts.push(name + " " + total);
       });
