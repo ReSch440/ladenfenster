@@ -23,7 +23,11 @@
   --accent: #b4502c;
   --accent-press: #9a4324;
   --accent-soft: rgba(180, 80, 44, 0.1);
+  --accent-text: #9a4324; /* Schrift auf --accent-soft, auch auf Grau über 4,5:1 */
   --on-accent: #ffffff;
+
+  /* Kante von Eingabefeldern und Schaltern, mindestens 3:1 zum Hintergrund */
+  --field-line: #86868b;
 
   --success: #1f7a4d;
   --error: #c0352b;
@@ -65,7 +69,10 @@
     --accent: #e98a63;
     --accent-press: #d97a54;
     --accent-soft: rgba(233, 138, 99, 0.14);
+    --accent-text: #e98a63;
     --on-accent: #1d1d1f;
+
+    --field-line: #6e6e73;
 
     --success: #4cc38a;
     --error: #ff6b5e;
@@ -292,6 +299,12 @@ a:hover {
   box-shadow: 0 1px 0 var(--line), 0 8px 24px -16px rgba(0, 0, 0, 0.25);
 }
 
+/* Offenes Handy-Menü: Leiste und Menü werden eine deckende Fläche */
+.site-header:has(.nav-links.is-open) {
+  background: var(--bg);
+  transition: none;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -417,16 +430,16 @@ html:not(.js) .nav-links {
   padding-bottom: 0.75rem;
 }
 
+/* Deckende Fläche: Ein backdrop-filter in der Glas-Leiste würde nur die
+   Leiste selbst weichzeichnen, nicht die Seite darunter. */
 .js .nav-links {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
   padding: 0.5rem var(--gutter) 1.25rem;
-  background: var(--nav-bg);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  box-shadow: 0 16px 24px -16px rgba(0, 0, 0, 0.25);
+  background: var(--bg);
+  box-shadow: 0 1px 0 var(--line), 0 24px 32px -20px rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-0.5rem);
@@ -516,7 +529,7 @@ html:not(.js) .nav-links {
   .js .nav-links a[aria-current="page"],
   .nav-links a[aria-current="page"] {
     opacity: 1;
-    color: var(--accent);
+    color: var(--accent-text);
     background: var(--accent-soft);
     font-weight: 600;
   }
@@ -576,7 +589,7 @@ html:not(.js) .nav-links {
 
 .btn-secondary {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .btn-secondary:hover {
@@ -612,7 +625,7 @@ html:not(.js) .nav-links {
 
 .pill-accent {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 /* ==========================================================================
@@ -1166,8 +1179,10 @@ html:not(.js) .nav-links {
   margin: 0;
   border-radius: var(--radius-pill);
   background: var(--fill-strong);
+  /* Kante, damit der Schalter auch ausgeschaltet als Schalter erkennbar ist */
+  box-shadow: inset 0 0 0 1.5px var(--field-line);
   cursor: pointer;
-  transition: background-color 0.25s ease;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .switch input::after {
@@ -1190,6 +1205,7 @@ html:not(.js) .nav-links {
 
 .switch input:checked {
   background: var(--accent);
+  box-shadow: inset 0 0 0 1.5px transparent;
 }
 
 .switch input:checked::after {
@@ -1486,17 +1502,17 @@ html:not(.js) .nav-links {
   padding: 0.7rem 0.95rem;
   border: 0;
   border-radius: var(--radius-s);
-  background: var(--bg-alt);
+  background: var(--surface);
   color: var(--text);
   font: inherit;
   font-size: 1rem;
-  box-shadow: inset 0 0 0 1px transparent;
+  box-shadow: inset 0 0 0 1px var(--field-line);
   transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .input::placeholder {
   color: var(--muted);
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .input:focus {
@@ -1530,7 +1546,7 @@ select.input {
 }
 
 .field.is-valid .input:not(:focus) {
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--success) 55%, transparent);
+  box-shadow: inset 0 0 0 1px var(--success);
 }
 
 .field-hint,
@@ -1591,11 +1607,11 @@ fieldset.field {
   height: 100%;
   padding: 0.7rem 0.85rem;
   border-radius: var(--radius-s);
-  background: var(--bg-alt);
+  background: var(--surface);
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.25;
-  box-shadow: inset 0 0 0 1px transparent;
+  box-shadow: inset 0 0 0 1px var(--field-line);
   transition: box-shadow 0.2s ease, background-color 0.2s ease, transform 0.3s var(--ease-out);
 }
 
