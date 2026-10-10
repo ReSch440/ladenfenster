@@ -35,9 +35,9 @@ Alle Farben stehen als Variablen ganz oben in `css/style.css`.
 
 | Rolle        | Hell      | Dunkel    |
 |--------------|-----------|-----------|
-| Hintergrund  | `#f5f0e6` Creme | `#0d1524` dunkles Navy |
-| Text         | `#18202e` | `#f2ece0` Creme |
-| Akzent       | `#1b2a44` Navy | `#f5f0e6` Creme |
+| Hintergrund  | `#f5f0e6` Creme | `#000000` Schwarz, Karten `#141414` |
+| Text         | `#18202e` | `#efe3cc` Creme, Fließtext `#bdb19b` |
+| Akzent       | `#1b2a44` Navy | Navy-Flächen `#18284a`, Icons `#4467ae`, Links `#6685c4`, Hauptbutton `#efe3cc` |
 
 Die Beispiel-Websites in den Mockups (Tischlerei, Café, Salon) haben bewusst ihre
 eigenen Farben, weil sie andere Firmen zeigen.

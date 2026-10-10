@@ -28,6 +28,13 @@
   --on-accent: #f5f0e6;
 
   /* Knopf im Schalter: aus auf grauer Spur, an auf Akzent-Spur */
+  /* Rollen, die im Dunkelmodus eigene Farben bekommen; hell gleich dem Akzent */
+  --link: var(--accent);
+  --btn-bg: var(--accent);
+  --btn-bg-press: var(--accent-press);
+  --switch-on: var(--accent);
+  --switch-on-ring: transparent;
+
   --knob: #ffffff;
   --knob-on: #ffffff;
 
@@ -63,35 +70,41 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0d1524; /* sehr dunkles Navy statt Schwarz */
-    --bg-alt: #121c2f;
-    --surface: #17223a;
-    --surface-raised: #1f2c47;
-    --text: #f2ece0; /* Creme */
-    --muted: #b3ada2;
-    --line: rgba(242, 236, 224, 0.13);
-    --fill: rgba(242, 236, 224, 0.07);
-    --fill-strong: rgba(242, 236, 224, 0.13);
+    --bg: #000000;
+    --bg-alt: #0c0c0c;
+    --surface: #141414; /* sehr dunkles Grau, hebt Karten vom Schwarz ab */
+    --surface-raised: #1e1e1e;
+    --text: #efe3cc; /* Creme für Überschriften, Preise, Beschriftungen */
+    --muted: #bdb19b; /* gedämpftes Creme für Fließtext */
+    --line: rgba(255, 255, 255, 0.12);
+    --fill: #1f1f1f;
+    --fill-strong: #2a2a2a;
 
-    --accent: #f5f0e6; /* Creme, dasselbe wie der Hintergrund im Hellmodus */
-    --accent-press: #e3d9c5;
-    --accent-soft: #22304d; /* dunkle Navy-Fläche für Sekundärbutton, Pills, aktive Navigation */
-    --accent-soft-hover: #2c3d60;
-    --accent-text: #f5f0e6;
-    --on-accent: #0d1524;
+    --accent: #4467ae; /* helleres Navy für Linien-Icons, Rahmen, Fokus-Ringe (#344f86 nur so weit aufgehellt, bis 3:1) */
+    --accent-press: #5674b6;
+    --accent-soft: #18284a; /* Navy-Fläche: aktiver Menüpunkt, Sekundärbutton, Pills, Kacheln */
+    --accent-soft-hover: #20335c;
+    --accent-text: #efe3cc; /* Schrift und Icons auf der Navy-Fläche */
+    --on-accent: #000000;
 
-    --knob: #f2ece0;
-    --knob-on: #0d1524;
+    --link: #6685c4; /* Navy, so weit aufgehellt, dass Linktext 4,5:1 erreicht */
+    --btn-bg: #efe3cc;
+    --btn-bg-press: #e0d1b3;
+    --switch-on: #18284a;
+    --switch-on-ring: #4467ae;
+
+    --knob: #efe3cc;
+    --knob-on: #efe3cc;
 
     --field-line: #8f877a;
 
     --success: #4cc38a;
     --error: #ff7a6e;
 
-    --nav-bg: rgba(13, 21, 36, 0.74);
-    --scrim: rgba(4, 8, 16, 0.6);
+    --nav-bg: rgba(0, 0, 0, 0.74);
+    --scrim: rgba(0, 0, 0, 0.65);
 
-    --shadow-rgb: 2 6 14;
+    --shadow-rgb: 0 0 0;
     --shadow-sm: 0 1px 2px rgb(var(--shadow-rgb) / 0.5);
     --shadow-md: 0 2px 6px rgb(var(--shadow-rgb) / 0.4), 0 12px 32px rgb(var(--shadow-rgb) / 0.5);
     --shadow-lg: 0 4px 14px rgb(var(--shadow-rgb) / 0.45), 0 28px 64px rgb(var(--shadow-rgb) / 0.6);
@@ -152,7 +165,7 @@ ol {
 }
 
 a {
-  color: var(--accent);
+  color: var(--link);
   text-decoration: none;
 }
 
@@ -419,7 +432,7 @@ a:hover {
 }
 
 .nav-links a[aria-current="page"] {
-  color: var(--accent);
+  color: var(--link);
   font-weight: 600;
 }
 
@@ -481,7 +494,7 @@ html:not(.js) .nav-links {
 }
 
 .js .nav-links a[aria-current="page"] {
-  color: var(--accent);
+  color: var(--link);
 }
 
 @media (min-width: 768px) {
@@ -588,12 +601,12 @@ html:not(.js) .nav-links {
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: var(--btn-bg);
   color: var(--on-accent);
 }
 
 .btn-primary:active {
-  background: var(--accent-press);
+  background: var(--btn-bg-press);
 }
 
 .btn-secondary {
@@ -617,7 +630,7 @@ html:not(.js) .nav-links {
 /* Hover nur mit echter Maus. Am Handy bliebe der Zustand nach dem Tippen hängen. */
 @media (hover: hover) and (pointer: fine) {
   .btn-primary:hover {
-    background: var(--accent-press);
+    background: var(--btn-bg-press);
   }
 
   .btn-secondary:hover {
@@ -800,7 +813,7 @@ html:not(.js) .nav-links {
   margin-bottom: 0.5rem;
   border-radius: 50%;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 700;
@@ -1252,8 +1265,8 @@ html:not(.js) .nav-links {
 }
 
 .switch input:checked {
-  background: var(--accent);
-  box-shadow: inset 0 0 0 1.5px transparent;
+  background: var(--switch-on);
+  box-shadow: inset 0 0 0 1.5px var(--switch-on-ring);
 }
 
 .switch input:checked::after {
@@ -1514,7 +1527,7 @@ html:not(.js) .nav-links {
   width: 1.15rem;
   height: 1.15rem;
   margin-top: 0.15rem;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .form-grid {
@@ -1835,7 +1848,7 @@ fieldset.field {
   width: 1.25rem;
   height: 1.25rem;
   margin-top: 0.15rem;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .legal section {
@@ -2482,7 +2495,7 @@ fieldset.field {
 }
 
 .footer-links a[aria-current="page"] {
-  color: var(--accent);
+  color: var(--link);
   font-weight: 600;
 }
 
@@ -2572,8 +2585,8 @@ fieldset.field {
 
 @media (prefers-contrast: more) and (prefers-color-scheme: dark) {
   :root {
-    --muted: #ddd6ca;
-    --line: rgba(242, 236, 224, 0.35);
+    --muted: #ddd2bd;
+    --line: rgba(255, 255, 255, 0.35);
   }
 }
 
